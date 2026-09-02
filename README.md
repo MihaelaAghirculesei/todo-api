@@ -1,7 +1,6 @@
-# Todo Platform API
+# Todo API
 
-> **Note:** This is a personal fork of [AlSweidanAhmad/todo-platform](https://github.com/AlSweidanAhmad/todo-platform).
-> Changes to this README and the backend implementation do not affect the original repository.
+> **Team project (2 developers).** This repository holds **my part: the complete FastAPI backend** — layered architecture, full CRUD, input validation and the test suite. A teammate built the React frontend. Original team repo: [AlSweidanAhmad/todo-platform](https://github.com/AlSweidanAhmad/todo-platform).
 
 ![Python](https://img.shields.io/badge/Python-3.13%2B-blue?logo=python&logoColor=white)
 ![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
@@ -18,12 +17,10 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 
 ### API Documentation (Swagger UI)
 
-<!-- Add a screenshot of http://localhost:8000/docs after starting the server -->
 ![API Docs](docs/screenshots/api-docs.png)
 
 ### Test Suite — 23/23 Passing
 
-<!-- Run: cd backend && pytest -v, then screenshot the terminal output -->
 ![Tests Passing](docs/screenshots/tests-passing.png)
 
 ---
@@ -57,7 +54,7 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 ## Project Structure
 
 ```
-todo-platform/
+todo-api/
 ├── backend/
 │   ├── app/
 │   │   ├── api/
@@ -103,11 +100,11 @@ todo-platform/
 - Python 3.13+
 - Git
 
-### 1. Clone your fork
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/MihaelaAghirculesei/todo-platform.git
-cd todo-platform/backend
+git clone https://github.com/MihaelaAghirculesei/todo-api.git
+cd todo-api/backend
 ```
 
 ### 2. Create and activate a virtual environment
@@ -354,4 +351,4 @@ HTTP Request
 
 ---
 
-*Personal fork — README changes are local to this repository and do not affect [AlSweidanAhmad/todo-platform](https://github.com/AlSweidanAhmad/todo-platform).*
+*This repository is my standalone backend from the team project [AlSweidanAhmad/todo-platform](https://github.com/AlSweidanAhmad/todo-platform).*
