@@ -2,11 +2,11 @@
 
 > **Team project (2 developers).** This repository holds **my part: the complete FastAPI backend** — layered architecture, full CRUD, input validation and the test suite. A teammate built the React frontend. Original team repo: [AlSweidanAhmad/todo-platform](https://github.com/AlSweidanAhmad/todo-platform).
 
-![Python](https://img.shields.io/badge/Python-3.13%2B-blue?logo=python&logoColor=white)
-![FastAPI](https://img.shields.io/badge/FastAPI-0.115-009688?logo=fastapi&logoColor=white)
+[![Tests](https://github.com/MihaelaAghirculesei/todo-api/actions/workflows/tests.yml/badge.svg)](https://github.com/MihaelaAghirculesei/todo-api/actions/workflows/tests.yml)
+![Python](https://img.shields.io/badge/Python-3.11%2B-blue?logo=python&logoColor=white)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.141-009688?logo=fastapi&logoColor=white)
 ![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red?logo=sqlalchemy&logoColor=white)
 ![SQLite](https://img.shields.io/badge/SQLite-embedded-003B57?logo=sqlite&logoColor=white)
-![Pytest](https://img.shields.io/badge/Tests-23%2F23%20passing-brightgreen?logo=pytest&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
 A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQLite**. Clean layered architecture with full CRUD support, input validation, and a comprehensive test suite.
@@ -19,7 +19,7 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 
 ![API Docs](docs/screenshots/api-docs.png)
 
-### Test Suite — 23/23 Passing
+### Test Suite — 24/24 Passing
 
 ![Tests Passing](docs/screenshots/tests-passing.png)
 
@@ -32,7 +32,7 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 - **ISO 8601 UTC** timestamps on all responses (`"created_at": "2026-02-12T10:30:00Z"`)
 - **CORS** configured for local frontend at `http://localhost:5173`
 - Tables created automatically on startup via SQLAlchemy `Base.metadata.create_all`
-- **23 tests** (unit + integration) using SQLite in-memory database
+- **24 tests** (unit + integration) using SQLite in-memory database
 
 ---
 
@@ -40,14 +40,14 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 
 | Layer | Technology |
 |---|---|
-| Framework | FastAPI 0.115 |
+| Framework | FastAPI 0.141 |
 | ORM | SQLAlchemy 2.0 |
 | Database | SQLite (file: `todos.db`) |
-| Validation | Pydantic 2.9 |
+| Validation | Pydantic 2.13 |
 | Config | pydantic-settings |
 | Server | Uvicorn |
-| Testing | Pytest + HTTPX |
-| Python | 3.13+ |
+| Testing | Pytest + TestClient |
+| Python | 3.11+ |
 
 ---
 
@@ -80,15 +80,17 @@ todo-api/
 │   │   └── main.py                     # Entry point (lifespan)
 │   ├── tests/
 │   │   ├── integration/
-│   │   │   └── test_routes.py          # API tests (10)
+│   │   │   └── test_routes.py          # API tests (11)
 │   │   ├── unit/
 │   │   │   └── test_todo_service.py    # Service tests (13)
 │   │   └── conftest.py                 # Fixtures
 │   └── requirements.txt
-├── docs/
-│   ├── api-contract.md
-│   └── screenshots/                    # Add screenshots here
-└── frontend/                           # React frontend
+└── docs/
+    ├── api-contract.md                 # API contract agreed with the frontend
+    ├── architecture.md
+    ├── work-plan-backend.md
+    ├── work-plan-frontend.md
+    └── screenshots/
 ```
 
 ---
@@ -97,7 +99,7 @@ todo-api/
 
 ### Prerequisites
 
-- Python 3.13+
+- Python 3.11+
 - Git
 
 ### 1. Clone the repository
@@ -265,7 +267,7 @@ curl -X POST http://localhost:8000/todos \
 ```
 
 ```json
-{ "detail": "Title must be between 1 and 200 characters." }
+{ "detail": "Title must not be empty" }
 ```
 
 ```bash
@@ -276,7 +278,7 @@ curl -X PATCH http://localhost:8000/todos/999 \
 ```
 
 ```json
-{ "detail": "Todo with id 999 not found." }
+{ "detail": "Todo 999 not found" }
 ```
 
 ---
@@ -288,12 +290,13 @@ cd backend
 pytest -v
 ```
 
-Expected output: **23 passed in 0.19s**.
+Expected output: **24 passed**.
 
 ```
 tests/integration/test_routes.py::TestHealthEndpoint::test_health_returns_ok PASSED
 tests/integration/test_routes.py::TestTodosEndpoints::test_get_todos_empty PASSED
 tests/integration/test_routes.py::TestTodosEndpoints::test_create_then_get_returns_created_item PASSED
+tests/integration/test_routes.py::TestTodosEndpoints::test_get_todos_returns_items_ordered_by_id PASSED
 tests/integration/test_routes.py::TestTodosEndpoints::test_create_invalid_title_returns_400 PASSED
 tests/integration/test_routes.py::TestTodosEndpoints::test_patch_updates_done PASSED
 tests/integration/test_routes.py::TestTodosEndpoints::test_patch_nonexistent_returns_404 PASSED
@@ -315,10 +318,11 @@ tests/unit/test_todo_service.py::TestUpdateTodo::test_update_invalid_id_raises_n
 tests/unit/test_todo_service.py::TestDeleteTodo::test_delete_existing PASSED
 tests/unit/test_todo_service.py::TestDeleteTodo::test_delete_invalid_id_raises_not_found PASSED
 
-23 passed in 0.19s
+24 passed in 0.18s
 ```
 
 > Tests run against an **SQLite in-memory database** — no file written, no cleanup needed.
+> They run automatically on every push and pull request via GitHub Actions (Python 3.11 and 3.13).
 
 ---
 
