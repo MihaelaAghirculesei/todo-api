@@ -11,6 +11,8 @@
 
 A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQLite**. Clean layered architecture with full CRUD support, input validation, and a comprehensive test suite.
 
+**Live demo:** [todo-frontend-aghirculesei.onrender.com](https://todo-frontend-aghirculesei.onrender.com) — the full team app (React frontend + this backend), deployed from the team repository with PostgreSQL.
+
 ---
 
 ## Screenshots
@@ -41,7 +43,7 @@ A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQ
 | Layer | Technology |
 |---|---|
 | Framework | FastAPI 0.141 |
-| ORM | SQLAlchemy 2.0 |
+| ORM | SQLAlchemy 2.1 (2.0-style API) |
 | Database | SQLite (file: `todos.db`) |
 | Validation | Pydantic 2.13 |
 | Config | pydantic-settings |
