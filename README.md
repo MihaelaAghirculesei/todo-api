@@ -84,7 +84,8 @@ todo-api/
 │   │   ├── unit/
 │   │   │   └── test_todo_service.py    # Service tests (13)
 │   │   └── conftest.py                 # Fixtures
-│   └── requirements.txt
+│   ├── requirements.txt            # Runtime dependencies
+│   └── requirements-dev.txt        # + test dependencies
 └── docs/
     ├── api-contract.md                 # API contract agreed with the frontend
     ├── architecture.md
@@ -287,6 +288,7 @@ curl -X PATCH http://localhost:8000/todos/999 \
 
 ```bash
 cd backend
+pip install -r requirements-dev.txt
 pytest -v
 ```
 
