@@ -4,10 +4,10 @@ REST API built with FastAPI. Provides CRUD operations for managing todos.
 
 ## Tech Stack
 
-- Python 3.12+
+- Python 3.11+
 - FastAPI
 - Pydantic v2
-- SQLAlchemy 2.0 + SQLite
+- SQLAlchemy 2.1 + SQLite
 
 ## Setup
 
@@ -49,7 +49,7 @@ pytest -v
 
 | Method | Path            | Description       |
 |--------|-----------------|-------------------|
-| GET    | /health         | Health check      |
+| GET, HEAD | /health      | Health check      |
 | GET    | /todos          | List all todos    |
 | POST   | /todos          | Create a todo     |
 | PATCH  | /todos/{id}     | Update a todo     |
