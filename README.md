@@ -9,9 +9,9 @@
 ![SQLite](https://img.shields.io/badge/SQLite-embedded-003B57?logo=sqlite&logoColor=white)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey)
 
-A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.0**, backed by **SQLite**. Clean layered architecture with full CRUD support, input validation, and a comprehensive test suite.
+A RESTful Todo API built with **FastAPI** and **SQLAlchemy 2.1**, backed by **SQLite**. Clean layered architecture with full CRUD support, input validation, and a comprehensive test suite.
 
-**Live demo:** [todo-frontend-aghirculesei.onrender.com](https://todo-frontend-aghirculesei.onrender.com) — the full team app (React frontend + this backend), deployed from the team repository with PostgreSQL.
+**Live demo:** [todo-frontend-aghirculesei.onrender.com](https://todo-frontend-aghirculesei.onrender.com) — the full team app (React frontend + this backend), deployed with PostgreSQL from my fork of the team repo, [todo-platform](https://github.com/MihaelaAghirculesei/todo-platform).
 
 ---
 
@@ -86,8 +86,8 @@ todo-api/
 │   │   ├── unit/
 │   │   │   └── test_todo_service.py    # Service tests (13)
 │   │   └── conftest.py                 # Fixtures
-│   ├── requirements.txt            # Runtime dependencies
-│   └── requirements-dev.txt        # + test dependencies
+│   ├── requirements.txt                # Runtime dependencies
+│   └── requirements-dev.txt            # + test dependencies
 └── docs/
     ├── api-contract.md                 # API contract agreed with the frontend
     ├── architecture.md
@@ -161,11 +161,13 @@ Interactive docs: **[http://localhost:8000/docs](http://localhost:8000/docs)**
 
 | Method | Path | Description |
 |--------|------|-------------|
-| `GET` | `/health` | Health check |
+| `GET`, `HEAD` | `/health` | Health check (HEAD for uptime monitors) |
 | `GET` | `/todos` | List all todos |
 | `POST` | `/todos` | Create a todo |
 | `PATCH` | `/todos/{id}` | Update title and/or done status |
 | `DELETE` | `/todos/{id}` | Delete a todo |
+
+Status codes and the error format are documented in [docs/api-contract.md](docs/api-contract.md#status-codes).
 
 ---
 
